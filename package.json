@@ -19,8 +19,7 @@
     "sass": "^1.97.3"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
