@@ -1,6 +1,6 @@
 {
   "name": "@maalbuquerque/tailsass",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Unofficial utility-first CSS/Sass helpers (not affiliated with Tailwind CSS).",
   "main": "dist/tailsass.css",
   "style": "dist/tailsass.css",
@@ -19,7 +19,8 @@
     "sass": "^1.97.3"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
