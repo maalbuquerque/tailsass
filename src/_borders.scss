@@ -1,0 +1,96 @@
+@use './variables';
+@use './modifiers' as *;
+
+$borders-styles: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+  none: none
+);
+
+@mixin apply-borders($prefix: '.', $postfix: '') {
+  @each $border-style, $value in $borders-styles {
+    #{$prefix}border-#{$border-style}#{$postfix} {
+      border-style: $value;
+    }
+    #{$prefix}outline-#{$border-style}#{$postfix} {
+      outline-style: $value;
+    }
+  }
+  #{$prefix}border#{$postfix} {
+    border-width: 1px;
+  }
+  #{$prefix}outline#{$postfix} {
+    outline-width: 1px;
+  }
+  @for $i from 0 through 12 {
+    #{$prefix}border-#{$i}#{$postfix} {
+      border-width: #{$i}px;
+    }
+    #{$prefix}border-t-#{$i}#{$postfix} {
+      border-top-width: #{$i}px;
+    }
+    #{$prefix}border-r-#{$i}#{$postfix} {
+      border-right-width: #{$i}px;
+    }
+    #{$prefix}border-b-#{$i}#{$postfix} {
+      border-bottom-width: #{$i}px;
+    }
+    #{$prefix}border-l-#{$i}#{$postfix} {
+      border-left-width: #{$i}px;
+    }
+    #{$prefix}border-x-#{$i}#{$postfix} {
+      border-inline-width: #{$i}px;
+    }
+    #{$prefix}border-y-#{$i}#{$postfix} {
+      border-block-width: #{$i}px;
+    }
+    #{$prefix}outline-#{$i}#{$postfix} {
+      outline-width: #{$i}px;
+    }
+    #{$prefix}outline-offset-#{$i}#{$postfix} {
+      outline-offset: #{$i}px;
+    }
+  }
+}
+
+@mixin apply-border-radius($prefix: '.', $postfix: '') {
+  #{$prefix}rounded-full#{$postfix} {
+    border-radius: 9999px;
+  }
+  @for $i from 0 through 12 {
+    #{$prefix}rounded-#{$i}#{$postfix} {
+      border-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-t-#{$i}#{$postfix} {
+      border-top-left-radius: calc($i * var(--border-radius));
+      border-top-right-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-r-#{$i}#{$postfix} {
+      border-top-right-radius: calc($i * var(--border-radius));
+      border-bottom-right-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-b-#{$i}#{$postfix} {
+      border-bottom-right-radius: calc($i * var(--border-radius));
+      border-bottom-left-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-l-#{$i}#{$postfix} {
+      border-top-left-radius: calc($i * var(--border-radius));
+      border-bottom-left-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-s-#{$i}#{$postfix} {
+      border-start-start-radius: calc($i * var(--border-radius));
+    }
+    #{$prefix}rounded-e-#{$i}#{$postfix} {
+      border-end-end-radius: calc($i * var(--border-radius));
+    }
+  }
+}
+
+@include apply-borders('.');
+@include apply-border-radius('.');
+
+@each $state in $states {
+  @include apply-borders('.#{$state}\\:', ':#{$state}');
+}

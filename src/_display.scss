@@ -1,0 +1,351 @@
+@use './modifiers' as *;
+
+$displays: (
+  inline: (
+    display: inline
+  ),
+  block: (
+    display: block
+  ),
+  inline-block: (
+    display: inline-block
+  ),
+  flow-root: (
+    display: flow-root
+  ),
+  flex: (
+    display: flex
+  ),
+  inline-flex: (
+    display: inline-flex
+  ),
+  grid: (
+    display: grid
+  ),
+  inline-grid: (
+    display: inline-grid
+  ),
+  contents: (
+    display: contents
+  ),
+  table: (
+    display: table
+  ),
+  inline-table: (
+    display: inline-table
+  ),
+  table-caption: (
+    display: table-caption
+  ),
+  table-cell: (
+    display: table-cell
+  ),
+  table-column: (
+    display: table-column
+  ),
+  table-column-group: (
+    display: table-column-group
+  ),
+  table-footer-group: (
+    display: table-footer-group
+  ),
+  table-header-group: (
+    display: table-header-group
+  ),
+  table-row-group: table-row-group,
+  table-row: (
+    display: table-row
+  ),
+  list-item: (
+    display: list-item
+  ),
+  hidden: (
+    display: none
+  ),
+  flex-none: (
+    flex: none
+  ),
+  flex-row: (
+    flex-direction: row
+  ),
+  flex-column: (
+    flex-direction: column
+  ),
+  flex-row-reverse: (
+    flex-direction: row-reverse
+  ),
+  flex-column-reverse: (
+    flex-direction: column-reverse
+  ),
+  flex-wrap: (
+    flex-wrap: wrap
+  ),
+  flex-nowrap: (
+    flex-wrap: nowrap
+  ),
+  flex-wrap-reverse: (
+    flex-wrap: wrap-reverse
+  ),
+  flex-auto: (
+    flex: auto
+  ),
+  flex-initial: (
+    flex: 0 auto
+  ),
+  grow-0: (
+    flex-grow: 0
+  ),
+  grow: (
+    flex-grow: 1
+  ),
+  shrink-0: (
+    flex-shrink: 0
+  ),
+  shrink: (
+    flex-shrink: 1
+  ),
+  float-left: (
+    float: left
+  ),
+  float-right: (
+    float: right
+  ),
+  float-none: (
+    float: none
+  ),
+  float-start: (
+    float: inline-start
+  ),
+  float-end: (
+    float: inline-end
+  ),
+  clear-left: (
+    clear: left
+  ),
+  clear-right: (
+    clear: right
+  ),
+  clear-both: (
+    clear: both
+  ),
+  clear-none: (
+    clear: none
+  ),
+  clear-start: (
+    clear: inline-start
+  ),
+  clear-end: (
+    clear: inline-end
+  ),
+  visible: (
+    visibility: visible
+  ),
+  invisible: (
+    visibility: hidden
+  ),
+  collapse: (
+    visibility: collapse
+  ),
+  justify-start: (
+    justify-content: flex-start
+  ),
+  justify-end: (
+    justify-content: flex-end
+  ),
+  justify-center: (
+    justify-content: center
+  ),
+  justify-between: (
+    justify-content: space-between
+  ),
+  justify-around: (
+    justify-content: space-around
+  ),
+  justify-evenly: (
+    justify-content: space-evenly
+  ),
+  justify-stretch: (
+    justify-content: stretch
+  ),
+  justify-items-start: (
+    justify-items: start
+  ),
+  justify-items-end: (
+    justify-items: end
+  ),
+  justify-items-center: (
+    justify-items: center
+  ),
+  justify-items-stretch: (
+    justify-items: stretch
+  ),
+  justify-self-start: (
+    justify-self: start
+  ),
+  justify-self-end: (
+    justify-self: end
+  ),
+  justify-self-center: (
+    justify-self: center
+  ),
+  justify-self-auto: (
+    justify-self: auto
+  ),
+  justify-self-stretch: (
+    justify-self: stretch
+  ),
+  content-normal: (
+    align-content: normal
+  ),
+  content-start: (
+    align-content: flex-start
+  ),
+  content-end: (
+    align-content: flex-end
+  ),
+  content-center: (
+    align-content: center
+  ),
+  content-between: (
+    align-content: space-between
+  ),
+  content-around: (
+    align-content: space-around
+  ),
+  content-evenly: (
+    align-content: space-evenly
+  ),
+  content-stretch: (
+    align-content: stretch
+  ),
+  items-start: (
+    align-items: flex-start
+  ),
+  items-end: (
+    align-items: flex-end
+  ),
+  items-center: (
+    align-items: center
+  ),
+  items-stretch: (
+    align-items: stretch
+  ),
+  items-baseline: (
+    align-items: baseline
+  ),
+  self-start: (
+    align-self: start
+  ),
+  self-end: (
+    align-self: end
+  ),
+  self-center: (
+    align-self: center
+  ),
+  self-auto: (
+    align-self: auto
+  ),
+  self-stretch: (
+    align-self: stretch
+  ),
+  self-baseline: (
+    align-self: baseline
+  ),
+  place-content-start: (
+    place-content: start
+  ),
+  place-content-end: (
+    place-content: end
+  ),
+  place-content-center: (
+    place-content: center
+  ),
+  place-content-between: (
+    place-content: space-between
+  ),
+  place-content-around: (
+    place-content: space-around
+  ),
+  place-content-evenly: (
+    place-content: space-evenly
+  ),
+  place-content-stretch: (
+    place-content: stretch
+  ),
+  place-items-start: (
+    place-items: start
+  ),
+  place-items-end: (
+    place-items: end
+  ),
+  place-items-center: (
+    place-items: center
+  ),
+  place-items-stretch: (
+    place-items: stretch
+  ),
+  place-items-baseline: (
+    place-items: baseline
+  ),
+  place-self-start: (
+    place-self: start
+  ),
+  place-self-end: (
+    place-self: end
+  ),
+  place-self-center: (
+    place-self: center
+  ),
+  place-self-auto: (
+    place-self: auto
+  ),
+  place-self-stretch: (
+    place-self: stretch
+  ),
+  sr-only: (
+    position: absolute,
+    width: 1px,
+    height: 1px,
+    padding: 0,
+    margin: -1px,
+    overflow: hidden,
+    clip: rect(0, 0, 0, 0),
+    white-space: nowrap,
+    border: 0
+  ),
+);
+
+@mixin apply-displays($prefix: '.') {
+  @each $display, $value in $displays {
+    #{$prefix}#{$display} {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+  @for $i from 1 through 12 {
+    #{$prefix}columns-#{$i} {
+      columns: $i;
+    }
+    #{$prefix}grid-cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+    #{$prefix}flex-#{$i} {
+      flex: $i;
+    }
+    #{$prefix}order-#{$i} {
+      order: $i;
+    }
+    #{$prefix}z-#{$i * 10} {
+      z-index: $i * 10;
+    }
+  }
+}
+
+@include apply-displays('.');
+
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include apply-displays('.#{$breakpoint}\\:');
+  }
+}

@@ -1,0 +1,34 @@
+$animations: (
+  "animate-spin": "spin 1s linear infinite",
+  "animate-pulse": "pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+  "animate-bounce": "bounce 1s infinite",	
+  "animate-none": "none"
+);
+
+$transitions: (
+  "transition-none": none,
+  "transition-all": all .2s ease-in-out,
+  "transition-colors": color 0.2s ease-in-out,
+  "transition-opacity": opacity 0.2s ease-in-out,
+  "transition-transform": transform 0.2s ease-in-out
+);
+
+@mixin apply-animations($prefix: '.') {
+  @each $animation, $value in $animations {
+    #{$prefix}#{$animation} {
+      animation: $value;
+    }
+  }
+}
+
+@mixin apply-transitions($prefix: '.') {
+  @each $transition, $value in $transitions {
+    #{$prefix}#{$transition} {
+      transition: $value;
+    }
+  }
+}
+
+@include apply-transitions('.');
+
+@include apply-animations('.');

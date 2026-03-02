@@ -1,0 +1,28 @@
+{
+  "name": "@maalbuquerque/tailsass",
+  "version": "0.1.0",
+  "description": "Unofficial utility-first CSS/Sass helpers (not affiliated with Tailwind CSS).",
+  "main": "dist/tailsass.css",
+  "style": "dist/tailsass.css",
+  "scripts": {
+    "build": "sass src/index.scss dist/tailsass.css --no-source-map --style=expanded",
+    "build:min": "sass src/index.scss dist/tailsass.min.css --no-source-map --style=compressed",
+    "prepare": "npm run build && npm run build:min",
+    "watch": "sass src/index.scss dist/tailsass.css --style=expanded --watch",
+    "watch:min": "sass src/index.scss dist/tailsass.min.css --style=compressed --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.97.3"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

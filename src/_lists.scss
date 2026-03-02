@@ -1,0 +1,23 @@
+$list-styles: (
+  list-disc: (
+    list-style-type: disc
+  ),
+  list-decimal: (
+    list-style-type: decimal
+  ),
+  list-none: (
+    list-style-type: none
+  )
+);
+
+@mixin apply-list-styles($prefix: '.') {
+  @each $style, $value in $list-styles {
+    #{$prefix}list-#{$style} {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+};
+
+@include apply-list-styles('.');

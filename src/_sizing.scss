@@ -1,0 +1,91 @@
+@use './variables';
+@use './modifiers' as *;
+
+$text-sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  '2xl': 1.5rem,
+  '3xl': 1.875rem,
+  '4xl': 2.25rem,
+  '5xl': 3rem,
+  '6xl': 3.75rem,
+  '7xl': 4.5rem,
+  '8xl': 6rem,
+  '9xl': 8rem
+);
+
+@mixin apply-sizes($prefix: '.') {
+  #{$prefix}w-auto {
+    width: auto;
+  }
+  #{$prefix}h-auto {
+    height: auto;
+  }
+  #{$prefix}w-full {
+    width: 100%;
+  }
+  #{$prefix}h-full {
+    height: 100%;
+  }
+  #{$prefix}w-screen {
+    width: 100vw;
+  }
+  #{$prefix}h-screen {
+    height: 100vh;
+  }
+  #{$prefix}w-min {
+    width: min-content;
+  }
+  #{$prefix}h-min {
+    height: min-content;
+  }
+  #{$prefix}w-max {
+    width: max-content;
+  }
+  #{$prefix}h-max {
+    height: max-content;
+  }
+  #{$prefix}w-fit {
+    width: fit-content;
+  }
+  #{$prefix}h-fit {
+    height: fit-content;
+  }
+
+  @for $i from 1 through 10 {
+    #{$prefix}w-#{$i}0 {
+      width: calc($i * 10%);
+    }
+    #{$prefix}h-#{$i}0 {
+      height: calc($i * 10%);
+    }
+    #{$prefix}w-#{$i}00px {
+      width: calc($i * 100px);
+    }
+    #{$prefix}h-#{$i}00px {
+      height: calc($i * 100px);
+    }
+  }
+}
+
+@mixin apply-text-sizes($prefix: '.') {
+  @each $size, $value in $text-sizes {
+    #{$prefix}text-#{$size} {
+      font-size: $value;
+    }
+  }
+}
+
+@include apply-sizes('.');
+@include apply-text-sizes('.');
+
+
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include apply-sizes('.#{$breakpoint}\\:');
+    @include apply-text-sizes('.#{$breakpoint}\\:');
+  }
+}

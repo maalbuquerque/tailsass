@@ -1,0 +1,93 @@
+@use './variables';
+@use './modifiers' as *;
+
+@mixin apply-spacing($prefix: '.') {
+  #{$prefix}m-auto {
+    margin: auto;
+  }
+  #{$prefix}mt-auto {
+    margin-top: auto;
+  }
+  #{$prefix}mr-auto {
+    margin-right: auto;
+  }
+  #{$prefix}mb-auto {
+    margin-bottom: auto;
+  }
+  #{$prefix}ml-auto {
+    margin-left: auto;
+  }
+  #{$prefix}mx-auto {
+    margin-inline: auto;
+  }
+  #{$prefix}my-auto {
+    margin-block: auto;
+  }
+  @for $i from 0 through 36 {
+    #{$prefix}gap-#{$i} {
+      gap: calc($i * var(--spacing));
+    }
+    #{$prefix}m-#{$i} {
+      margin: calc($i * var(--spacing));
+    }
+    #{$prefix}mt-#{$i} {
+      margin-top: calc($i * var(--spacing));
+    }
+    #{$prefix}mr-#{$i} {
+      margin-right: calc($i * var(--spacing));
+    }
+    #{$prefix}mb-#{$i} {
+      margin-bottom: calc($i * var(--spacing));
+    }
+    #{$prefix}ml-#{$i} {
+      margin-left: calc($i * var(--spacing));
+    }
+    #{$prefix}mx-#{$i} {
+      margin-inline: calc($i * var(--spacing));
+    }
+    #{$prefix}my-#{$i} {
+      margin-block: calc($i * var(--spacing));
+    }
+    #{$prefix}p-#{$i} {
+      padding: calc($i * var(--spacing));
+    }
+    #{$prefix}pt-#{$i} {
+      padding-top: calc($i * var(--spacing));
+    }
+    #{$prefix}pr-#{$i} {
+      padding-right: calc($i * var(--spacing));
+    }
+    #{$prefix}pb-#{$i} {
+      padding-bottom: calc($i * var(--spacing));
+    }
+    #{$prefix}pl-#{$i} {
+      padding-left: calc($i * var(--spacing));
+    }
+    #{$prefix}px-#{$i} {
+      padding-inline: calc($i * var(--spacing));
+    }
+    #{$prefix}py-#{$i} {
+      padding-block: calc($i * var(--spacing));
+    }
+    #{$prefix}top-#{$i} {
+      top: calc($i * var(--spacing));
+    }
+    #{$prefix}right-#{$i} {
+      right: calc($i * var(--spacing));
+    }
+    #{$prefix}bottom-#{$i} {
+      bottom: calc($i * var(--spacing));
+    }
+    #{$prefix}left-#{$i} {
+      left: calc($i * var(--spacing));
+    }
+  }
+}
+
+@include apply-spacing('.');
+
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include apply-spacing('.#{$breakpoint}\\:');
+  }
+}

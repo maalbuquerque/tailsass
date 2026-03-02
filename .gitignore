@@ -1,0 +1,11 @@
+node_modules/
+dist/
+
+# Optional: uncomment if .npmrc contains a real token
+# .npmrc
+
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db

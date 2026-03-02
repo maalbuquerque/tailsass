@@ -1,0 +1,26 @@
+@use './variables';
+@use './modifiers' as *;
+
+$positions: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky
+);
+
+@mixin apply-positions($prefix: '.') {
+  @each $position, $value in $positions {
+    #{$prefix}#{$position} {
+      position: $value;
+    }
+  }  
+}
+
+@include apply-positions('.');
+
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include apply-positions('.#{$breakpoint}\\:');
+  }
+}

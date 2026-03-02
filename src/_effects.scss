@@ -1,0 +1,15 @@
+@use './modifiers' as *;
+
+@mixin apply-opacity($prefix: '.', $postfix: '') {
+  @for $i from 0 through 10 {
+    #{$prefix}opacity-#{$i * 10}#{$postfix} {
+      opacity: calc($i * 0.1);
+    }
+  }
+}
+
+@include apply-opacity('.');
+
+@each $state in $states {
+  @include apply-opacity('.#{$state}\\:', ':#{$state}');
+}

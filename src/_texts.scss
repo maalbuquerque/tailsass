@@ -1,0 +1,99 @@
+@use './modifiers' as *;
+
+$text-props: (
+  text-left: (
+    text-align: left
+  ),
+  text-right: (
+    text-align: right
+  ),
+  text-center: (
+    text-align: center
+  ),
+  text-justify: (
+    text-align: justify
+  ),
+  truncate: (
+    overflow: hidden,
+    text-overflow: ellipsis,
+    white-space: nowrap
+  ),
+  text-ellipsis: (
+    text-overflow: ellipsis
+  ),
+  text-clip: (
+    text-overflow: clip
+  ),
+  text-wrap: (
+    white-space: normal
+  ),
+  text-nowrap: (
+    white-space: nowrap
+  ),
+  text-balance: (
+    text-wrap: balance
+  ),
+  text-pretty: (
+    text-wrap: pretty
+  ),
+  text-xs: (
+    font-size: 0.75rem
+  ),
+  text-sm: (
+    font-size: 0.875rem
+  ),
+  text-base: (
+    font-size: 1rem
+  ),
+  text-lg: (
+    font-size: 1.125rem
+  ),
+  text-xl: (
+    font-size: 1.25rem
+  ),
+  text-2xl: (
+    font-size: 1.5rem
+  ),
+  text-3xl: (
+    font-size: 1.875rem
+  ),
+  text-4xl: (
+    font-size: 2.25rem
+  ),
+  text-5xl: (
+    font-size: 3rem
+  ),
+  text-6xl: (
+    font-size: 3.75rem
+  ),
+  text-7xl: (
+    font-size: 4.5rem
+  ),
+  text-8xl: (
+    font-size: 6rem
+  ),
+  text-9xl: (
+    font-size: 8rem
+  ),
+  font-bold: (
+    font-weight: bold
+  )
+);
+
+@mixin apply-text-props($prefix: '.') {
+  @each $prop, $value in $text-props {
+    #{$prefix}#{$prop} {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+}
+
+@include apply-text-props('.');
+
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include apply-text-props('.#{$breakpoint}\\:');
+  }
+}
