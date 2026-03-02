@@ -42,4 +42,4 @@ import '@maalbuquerque/tailsass/dist/tailsass.css';
 
 ## License
 
-ISC
+Proprietary (all rights reserved). This software is not open source and may not be used, copied, modified, or distributed except as expressly permitted by the owner.
