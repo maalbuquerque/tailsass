@@ -2,7 +2,7 @@ node_modules/
 dist/
 
 # Optional: uncomment if .npmrc contains a real token
-# .npmrc
+.npmrc
 
 .env
 .env.*
