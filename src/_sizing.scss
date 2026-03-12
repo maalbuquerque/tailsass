@@ -96,6 +96,13 @@ $tailwind-fixed-sizes: (
     #{$prefix}h-#{$i}00px {
       height: calc($i * 100px);
     }
+
+    #{$prefix}w-#{$i}0pct {
+      width: calc($i * 10%);
+    }
+    #{$prefix}h-#{$i}0pct {
+      height: calc($i * 10%);
+    }
   }
 
   @each $name, $size in $tailwind-fixed-sizes {
