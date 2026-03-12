@@ -17,6 +17,40 @@ $text-sizes: (
   '9xl': 8rem
 );
 
+// Tailwind fixed size scale (excluding custom keywords like auto/full/screen)
+$tailwind-fixed-sizes: (
+  '0': 0rem,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 0.75rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '7': 1.75rem,
+  '8': 2rem,
+  '9': 2.25rem,
+  '10': 2.5rem,
+  '11': 2.75rem,
+  '12': 3rem,
+  '14': 3.5rem,
+  '16': 4rem,
+  '20': 5rem,
+  '24': 6rem,
+  '28': 7rem,
+  '32': 8rem,
+  '36': 9rem,
+  '40': 10rem,
+  '44': 11rem,
+  '48': 12rem,
+  '52': 13rem,
+  '56': 14rem,
+  '60': 15rem,
+  '64': 16rem,
+  '72': 18rem,
+  '80': 20rem,
+  '96': 24rem
+);
+
 @mixin apply-sizes($prefix: '.') {
   #{$prefix}w-auto {
     width: auto;
@@ -56,17 +90,20 @@ $text-sizes: (
   }
 
   @for $i from 1 through 10 {
-    #{$prefix}w-#{$i}0 {
-      width: calc($i * 10%);
-    }
-    #{$prefix}h-#{$i}0 {
-      height: calc($i * 10%);
-    }
     #{$prefix}w-#{$i}00px {
       width: calc($i * 100px);
     }
     #{$prefix}h-#{$i}00px {
       height: calc($i * 100px);
+    }
+  }
+
+  @each $name, $size in $tailwind-fixed-sizes {
+    #{$prefix}w-#{$name} {
+      width: $size;
+    }
+    #{$prefix}h-#{$name} {
+      height: $size;
     }
   }
 }
