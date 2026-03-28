@@ -1,6 +1,6 @@
 ## Spacing utilities
 
-Tailsass provides margin, padding, gap, and positional spacing helpers modeled after utility-first CSS frameworks.
+Tailsass provides margin, padding, gap, and positional spacing helpers that follow Tailwind's size scale.
 
 ### Class naming
 
@@ -9,7 +9,42 @@ Tailsass provides margin, padding, gap, and positional spacing helpers modeled a
 - **Gap** (for flex/grid): `gap-{n}`
 - **Position offsets**: `top-{n}`, `right-{n}`, `bottom-{n}`, `left-{n}`
 
-`{n}` is an integer from `0` through `36`, multiplied by the base `--spacing` custom property.
+`{n}` follows the Tailwind fixed size scale:
+
+| Class suffix | Value |
+|---|---|
+| `0` | `0rem` |
+| `1` | `0.25rem` |
+| `2` | `0.5rem` |
+| `3` | `0.75rem` |
+| `4` | `1rem` |
+| `5` | `1.25rem` |
+| `6` | `1.5rem` |
+| `7` | `1.75rem` |
+| `8` | `2rem` |
+| `9` | `2.25rem` |
+| `10` | `2.5rem` |
+| `11` | `2.75rem` |
+| `12` | `3rem` |
+| `14` | `3.5rem` |
+| `16` | `4rem` |
+| `20` | `5rem` |
+| `24` | `6rem` |
+| `28` | `7rem` |
+| `32` | `8rem` |
+| `36` | `9rem` |
+| `40` | `10rem` |
+| `44` | `11rem` |
+| `48` | `12rem` |
+| `52` | `13rem` |
+| `56` | `14rem` |
+| `60` | `15rem` |
+| `64` | `16rem` |
+| `72` | `18rem` |
+| `80` | `20rem` |
+| `96` | `24rem` |
+
+Note that values 0–12 are contiguous, then the scale becomes non-linear (14, 16, 20, 24, …, 96).
 
 ### Basic examples
 
@@ -29,7 +64,7 @@ Tailsass provides margin, padding, gap, and positional spacing helpers modeled a
   <li class="p-2">Item 1</li>
   <li class="p-2">Item 2</li>
   <li class="p-2">Item 3</li>
-  </ul>
+</ul>
 ```
 
 ### Auto spacing
@@ -57,6 +92,3 @@ All spacing classes support breakpoint prefixes (e.g. `sm:`, `md:`, `lg:` depend
   </p>
 </section>
 ```
-
-You can copy any of these examples into your `.md` files as fenced code blocks to show how spacing works.
-

@@ -1,4 +1,4 @@
-@use './variables';
+@use './variables' as *;
 @use './modifiers' as *;
 
 @mixin apply-spacing($prefix: '.') {
@@ -23,63 +23,64 @@
   #{$prefix}my-auto {
     margin-block: auto;
   }
-  @for $i from 0 through 36 {
-    #{$prefix}gap-#{$i} {
-      gap: calc($i * var(--spacing));
+
+  @each $name, $size in $tailwind-fixed-sizes {
+    #{$prefix}gap-#{$name} {
+      gap: $size;
     }
-    #{$prefix}m-#{$i} {
-      margin: calc($i * var(--spacing));
+    #{$prefix}m-#{$name} {
+      margin: $size;
     }
-    #{$prefix}mt-#{$i} {
-      margin-top: calc($i * var(--spacing));
+    #{$prefix}mt-#{$name} {
+      margin-top: $size;
     }
-    #{$prefix}mr-#{$i} {
-      margin-right: calc($i * var(--spacing));
+    #{$prefix}mr-#{$name} {
+      margin-right: $size;
     }
-    #{$prefix}mb-#{$i} {
-      margin-bottom: calc($i * var(--spacing));
+    #{$prefix}mb-#{$name} {
+      margin-bottom: $size;
     }
-    #{$prefix}ml-#{$i} {
-      margin-left: calc($i * var(--spacing));
+    #{$prefix}ml-#{$name} {
+      margin-left: $size;
     }
-    #{$prefix}mx-#{$i} {
-      margin-inline: calc($i * var(--spacing));
+    #{$prefix}mx-#{$name} {
+      margin-inline: $size;
     }
-    #{$prefix}my-#{$i} {
-      margin-block: calc($i * var(--spacing));
+    #{$prefix}my-#{$name} {
+      margin-block: $size;
     }
-    #{$prefix}p-#{$i} {
-      padding: calc($i * var(--spacing));
+    #{$prefix}p-#{$name} {
+      padding: $size;
     }
-    #{$prefix}pt-#{$i} {
-      padding-top: calc($i * var(--spacing));
+    #{$prefix}pt-#{$name} {
+      padding-top: $size;
     }
-    #{$prefix}pr-#{$i} {
-      padding-right: calc($i * var(--spacing));
+    #{$prefix}pr-#{$name} {
+      padding-right: $size;
     }
-    #{$prefix}pb-#{$i} {
-      padding-bottom: calc($i * var(--spacing));
+    #{$prefix}pb-#{$name} {
+      padding-bottom: $size;
     }
-    #{$prefix}pl-#{$i} {
-      padding-left: calc($i * var(--spacing));
+    #{$prefix}pl-#{$name} {
+      padding-left: $size;
     }
-    #{$prefix}px-#{$i} {
-      padding-inline: calc($i * var(--spacing));
+    #{$prefix}px-#{$name} {
+      padding-inline: $size;
     }
-    #{$prefix}py-#{$i} {
-      padding-block: calc($i * var(--spacing));
+    #{$prefix}py-#{$name} {
+      padding-block: $size;
     }
-    #{$prefix}top-#{$i} {
-      top: calc($i * var(--spacing));
+    #{$prefix}top-#{$name} {
+      top: $size;
     }
-    #{$prefix}right-#{$i} {
-      right: calc($i * var(--spacing));
+    #{$prefix}right-#{$name} {
+      right: $size;
     }
-    #{$prefix}bottom-#{$i} {
-      bottom: calc($i * var(--spacing));
+    #{$prefix}bottom-#{$name} {
+      bottom: $size;
     }
-    #{$prefix}left-#{$i} {
-      left: calc($i * var(--spacing));
+    #{$prefix}left-#{$name} {
+      left: $size;
     }
   }
 }
