@@ -1,6 +1,6 @@
 {
   "name": "@maalbuquerque/tailsass",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Unofficial utility-first CSS/Sass helpers (not affiliated with Tailwind CSS).",
   "main": "dist/tailsass.css",
   "style": "dist/tailsass.css",

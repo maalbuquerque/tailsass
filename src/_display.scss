@@ -68,13 +68,13 @@ $displays: (
   flex-row: (
     flex-direction: row
   ),
-  flex-column: (
+  flex-col: (
     flex-direction: column
   ),
   flex-row-reverse: (
     flex-direction: row-reverse
   ),
-  flex-column-reverse: (
+  flex-col-reverse: (
     flex-direction: column-reverse
   ),
   flex-wrap: (
@@ -330,6 +330,27 @@ $displays: (
     #{$prefix}grid-cols-#{$i} {
       grid-template-columns: repeat($i, minmax(0, 1fr));
     }
+    #{$prefix}grid-rows-#{$i} {
+      grid-template-rows: repeat($i, minmax(0, 1fr));
+    }
+    #{$prefix}col-span-#{$i} {
+      grid-column: span $i / span $i;
+    }
+    #{$prefix}col-start-#{$i} {
+      grid-column-start: $i;
+    }
+    #{$prefix}col-end-#{$i} {
+      grid-column-end: $i;
+    }
+    #{$prefix}row-span-#{$i} {
+      grid-row: span $i / span $i;
+    }
+    #{$prefix}row-start-#{$i} {
+      grid-row-start: $i;
+    }
+    #{$prefix}row-end-#{$i} {
+      grid-row-end: $i;
+    }
     #{$prefix}flex-#{$i} {
       flex: $i;
     }
@@ -339,6 +360,18 @@ $displays: (
     #{$prefix}z-#{$i * 10} {
       z-index: $i * 10;
     }
+  }
+  #{$prefix}col-span-full {
+    grid-column: 1 / -1;
+  }
+  #{$prefix}row-span-full {
+    grid-row: 1 / -1;
+  }
+  #{$prefix}col-auto {
+    grid-column: auto;
+  }
+  #{$prefix}row-auto {
+    grid-row: auto;
   }
 }
 
