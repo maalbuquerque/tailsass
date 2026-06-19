@@ -1,4 +1,4 @@
-@use './modifiers' as *;
+@use 'modifiers' as *;
 
 @mixin apply-opacity($prefix: '.', $postfix: '') {
   @for $i from 0 through 10 {

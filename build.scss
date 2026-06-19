@@ -1,0 +1,16 @@
+// Repo-only entry for `npm run build` (relative paths).
+// Apps import src/index.scss (package paths).
+@use './src/animation';
+@use './src/borders';
+@use './src/colors';
+@use './src/cursor';
+@use './src/display';
+@use './src/effects';
+@use './src/lists';
+@use './src/overflow';
+@use './src/position';
+@use './src/preflight';
+@use './src/sizing';
+@use './src/spacing';
+@use './src/texts';
+@use './src/transform';

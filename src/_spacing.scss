@@ -1,5 +1,5 @@
-@use './variables' as *;
-@use './modifiers' as *;
+@use 'variables' as *;
+@use 'modifiers' as *;
 
 @mixin apply-spacing($prefix: '.') {
   #{$prefix}m-auto {

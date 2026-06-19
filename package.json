@@ -1,15 +1,16 @@
 {
   "name": "@maalbuquerque/tailsass",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "Unofficial utility-first CSS/Sass helpers (not affiliated with Tailwind CSS).",
   "main": "dist/tailsass.css",
   "style": "dist/tailsass.css",
+  "sass": "src/index.scss",
   "scripts": {
-    "build": "sass src/index.scss dist/tailsass.css --no-source-map --style=expanded",
-    "build:min": "sass src/index.scss dist/tailsass.min.css --no-source-map --style=compressed",
+    "build": "sass build.scss dist/tailsass.css --no-source-map --style=expanded --load-path=src",
+    "build:min": "sass build.scss dist/tailsass.min.css --no-source-map --style=compressed --load-path=src",
     "prepare": "npm run build && npm run build:min",
-    "watch": "sass src/index.scss dist/tailsass.css --style=expanded --watch",
-    "watch:min": "sass src/index.scss dist/tailsass.min.css --style=compressed --watch"
+    "watch": "sass build.scss dist/tailsass.css --style=expanded --load-path=src --watch",
+    "watch:min": "sass build.scss dist/tailsass.min.css --style=compressed --load-path=src --watch"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,15 @@
     "dist",
     "src"
   ],
+  "exports": {
+    ".": {
+      "sass": "./src/index.scss",
+      "style": "./dist/tailsass.css",
+      "default": "./dist/tailsass.css"
+    },
+    "./src/*": "./src/*",
+    "./dist/*": "./dist/*"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   }

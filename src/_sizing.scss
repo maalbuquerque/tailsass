@@ -1,5 +1,5 @@
-@use './variables' as *;
-@use './modifiers' as *;
+@use 'variables' as *;
+@use 'modifiers' as *;
 
 @mixin apply-sizes($prefix: '.') {
   #{$prefix}w-auto {
