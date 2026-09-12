@@ -1,4 +1,3 @@
-@use 'sass:string';
 @use 'variables' as *;
 @use 'modifiers' as *;
 
@@ -41,13 +40,11 @@
   }
 
   // Fractions (HTML: w-1/2 → CSS: .w-1\/2)
-  @each $name, $size in $tailwind-fractions {
-    $class: string.replace(#{$name}, '/', '\\/');
-
-    #{$prefix}w-#{$class} {
+  @each $num, $den, $size in $tailwind-fractions {
+    #{"#{$prefix}w-#{$num}\\/#{$den}"} {
       width: $size;
     }
-    #{$prefix}h-#{$class} {
+    #{"#{$prefix}h-#{$num}\\/#{$den}"} {
       height: $size;
     }
   }
@@ -55,17 +52,17 @@
   // Fixed arbitrary-value whitelist (not open-ended like Tailwind JIT).
   // HTML: w-[100px], h-[50%], etc. → CSS: .w-\[100px], .h-\[50\%]
   @for $i from 1 through 10 {
-    #{$prefix}w-\\[#{$i}00px\\] {
+    #{"#{$prefix}w-\\[#{$i}00px\\]"} {
       width: $i * 100px;
     }
-    #{$prefix}h-\\[#{$i}00px\\] {
+    #{"#{$prefix}h-\\[#{$i}00px\\]"} {
       height: $i * 100px;
     }
 
-    #{$prefix}w-\\[#{$i}0\\%\\] {
+    #{"#{$prefix}w-\\[#{$i}0\\%\\]"} {
       width: $i * 10%;
     }
-    #{$prefix}h-\\[#{$i}0\\%\\] {
+    #{"#{$prefix}h-\\[#{$i}0\\%\\]"} {
       height: $i * 10%;
     }
   }

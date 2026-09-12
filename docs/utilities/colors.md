@@ -4,7 +4,9 @@ Color utilities provide background, text, border, outline, shadow, and accent co
 
 ### Palette and naming
 
-Colors are organized by name (for example `slate`, `red`, `yellow`, `emerald`, `blue`, `indigo`) and shade (`50`–`950`):
+Colors are organized by name and shade (`50`–`950`). Full palettes:
+
+`slate`, `gray`, `zinc`, `neutral`, `stone`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`
 
 - Background: `bg-{color}-{shade}`
 - Text: `text-{color}-{shade}`
