@@ -60,25 +60,45 @@ Width and height classes follow the Tailwind size scale with `w-{n}` and `h-{n}`
 </div>
 ```
 
-### Percentage and pixel sizes
+### Fraction sizes
 
-Percentage helpers use a `pct` suffix in 10% steps, and pixel helpers use a `px` suffix in 100px steps:
+Tailwind-compatible fraction utilities (`/` escaped in CSS as `\/`):
 
-- **Percent**: `w-10pct`, `w-20pct`, …, `w-100pct` and matching `h-*` versions
-- **Pixels**: `w-100px`, `w-200px`, …, `w-1000px` and matching `h-*` versions
+- Halves: `w-1/2`
+- Thirds: `w-1/3`, `w-2/3`
+- Fourths: `w-1/4`, `w-2/4`, `w-3/4`
+- Fifths: `w-1/5` … `w-4/5`
+- Sixths: `w-1/6` … `w-5/6`
+- Twelfths: `w-1/12` … `w-11/12`
+
+Same set for `h-*`. Responsive prefixes work too (`md:w-1/2`).
 
 ```html
-<div class="w-50pct h-300px">
+<div class="flex">
+  <div class="w-1/3">One third</div>
+  <div class="w-2/3">Two thirds</div>
+</div>
+```
+
+### Percentage and pixel sizes
+
+Fixed arbitrary-value whitelist (Tailwind-style brackets). Not open-ended — only these steps are generated:
+
+- **Percent** (10% steps): `w-[10%]`, `w-[20%]`, …, `w-[100%]` and matching `h-[…]`
+- **Pixels** (100px steps): `w-[100px]`, `w-[200px]`, …, `w-[1000px]` and matching `h-[…]`
+
+```html
+<div class="w-[50%] h-[300px]">
   50% width, 300px height
 </div>
 ```
 
 ### Responsive sizing
 
-All sizing classes support breakpoint prefixes (for example `sm:`, `md:`, `lg:` depending on your `$breakpoints`):
+All sizing classes support breakpoint prefixes (`xs:`, `sm:`, `md:`, `lg:`, `xl:`, `2xl:`, `3xl:`):
 
 ```html
-<div class="w-full md:w-50pct lg:w-64">
-  Full width on mobile, 50% on medium, 16rem on large.
+<div class="w-full md:w-1/2 lg:w-64 2xl:w-80">
+  Full width on mobile, half on medium, fixed on large+.
 </div>
 ```

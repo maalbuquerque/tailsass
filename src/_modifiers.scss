@@ -1,13 +1,31 @@
+@use 'sass:string';
+
 $breakpoints: (
   xs: 480px,
   sm: 640px,
   md: 768px,
   lg: 1024px,
   xl: 1280px,
-  xxl: 1536px,
-  xxxl: 1920px
+  '2xl': 1536px,
+  '3xl': 1920px
 );
 
 $states: hover, focus, active;
 
 $color-schemes: light, dark;
+
+// CSS identifiers cannot start with a digit unless escaped (e.g. 2xl → \32 xl).
+@function escape-ident($name) {
+  $str: #{$name};
+  $first: string.slice($str, 1, 1);
+
+  @if string.index('0123456789', $first) != null {
+    @return '\\3' + $first + ' ' + string.slice($str, 2);
+  }
+
+  @return $str;
+}
+
+@function bp-prefix($breakpoint) {
+  @return '.#{escape-ident($breakpoint)}\\:';
+}

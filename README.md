@@ -10,13 +10,6 @@ Unofficial utility-first CSS/Sass helpers. Use as compiled CSS or import the Sas
 npm install @maalbuquerque/tailsass
 ```
 
-Configure `.npmrc` if using GitHub Packages:
-
-```
-@maalbuquerque:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
-```
-
 ## Use
 
 **As CSS** (e.g. in your app entry or bundler):
@@ -40,6 +33,10 @@ import '@maalbuquerque/tailsass/dist/tailsass.css';
 | `npm run watch`   | Watch and rebuild expanded CSS       |
 | `npm run watch:min` | Watch and rebuild minified CSS    |
 
+## Status / contributions
+
+MIT-licensed and open to forks. Contributions are **best-effort** — see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## License
 
-Proprietary (all rights reserved). This software is not open source and may not be used, copied, modified, or distributed except as expressly permitted by the owner.
+[MIT](./LICENSE)

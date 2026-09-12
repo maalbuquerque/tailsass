@@ -18,7 +18,7 @@ Display utilities cover `display`, flexbox, grid, floats, visibility, and alignm
 
 ### Flexbox helpers
 
-- Direction: `flex-row`, `flex-column`, `flex-row-reverse`, `flex-column-reverse`
+- Direction: `flex-row`, `flex-col`, `flex-row-reverse`, `flex-col-reverse`
 - Wrapping: `flex-wrap`, `flex-nowrap`, `flex-wrap-reverse`
 - Flex behavior: `flex-none`, `flex-auto`, `flex-initial`, `flex-{n}` (1–12)
 - Growth/shrink: `grow`, `grow-0`, `shrink`, `shrink-0`

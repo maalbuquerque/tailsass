@@ -9,6 +9,19 @@ $borders-styles: (
   none: none
 );
 
+// Tailwind default border-radius scale
+$border-radius-scale: (
+  none: 0px,
+  sm: 0.125rem,
+  DEFAULT: 0.25rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  xl: 0.75rem,
+  '2xl': 1rem,
+  '3xl': 1.5rem,
+  full: 9999px
+);
+
 @mixin apply-borders($prefix: '.', $postfix: '') {
   @each $border-style, $value in $borders-styles {
     #{$prefix}border-#{$border-style}#{$postfix} {
@@ -56,34 +69,63 @@ $borders-styles: (
 }
 
 @mixin apply-border-radius($prefix: '.', $postfix: '') {
-  #{$prefix}rounded-full#{$postfix} {
-    border-radius: 9999px;
-  }
-  @for $i from 0 through 12 {
-    #{$prefix}rounded-#{$i}#{$postfix} {
-      border-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-t-#{$i}#{$postfix} {
-      border-top-left-radius: calc($i * var(--border-radius));
-      border-top-right-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-r-#{$i}#{$postfix} {
-      border-top-right-radius: calc($i * var(--border-radius));
-      border-bottom-right-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-b-#{$i}#{$postfix} {
-      border-bottom-right-radius: calc($i * var(--border-radius));
-      border-bottom-left-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-l-#{$i}#{$postfix} {
-      border-top-left-radius: calc($i * var(--border-radius));
-      border-bottom-left-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-s-#{$i}#{$postfix} {
-      border-start-start-radius: calc($i * var(--border-radius));
-    }
-    #{$prefix}rounded-e-#{$i}#{$postfix} {
-      border-end-end-radius: calc($i * var(--border-radius));
+  @each $name, $size in $border-radius-scale {
+    @if $name == DEFAULT {
+      #{$prefix}rounded#{$postfix} {
+        border-radius: $size;
+      }
+      #{$prefix}rounded-t#{$postfix} {
+        border-top-left-radius: $size;
+        border-top-right-radius: $size;
+      }
+      #{$prefix}rounded-r#{$postfix} {
+        border-top-right-radius: $size;
+        border-bottom-right-radius: $size;
+      }
+      #{$prefix}rounded-b#{$postfix} {
+        border-bottom-right-radius: $size;
+        border-bottom-left-radius: $size;
+      }
+      #{$prefix}rounded-l#{$postfix} {
+        border-top-left-radius: $size;
+        border-bottom-left-radius: $size;
+      }
+      #{$prefix}rounded-s#{$postfix} {
+        border-start-start-radius: $size;
+        border-end-start-radius: $size;
+      }
+      #{$prefix}rounded-e#{$postfix} {
+        border-start-end-radius: $size;
+        border-end-end-radius: $size;
+      }
+    } @else {
+      #{$prefix}rounded-#{$name}#{$postfix} {
+        border-radius: $size;
+      }
+      #{$prefix}rounded-t-#{$name}#{$postfix} {
+        border-top-left-radius: $size;
+        border-top-right-radius: $size;
+      }
+      #{$prefix}rounded-r-#{$name}#{$postfix} {
+        border-top-right-radius: $size;
+        border-bottom-right-radius: $size;
+      }
+      #{$prefix}rounded-b-#{$name}#{$postfix} {
+        border-bottom-right-radius: $size;
+        border-bottom-left-radius: $size;
+      }
+      #{$prefix}rounded-l-#{$name}#{$postfix} {
+        border-top-left-radius: $size;
+        border-bottom-left-radius: $size;
+      }
+      #{$prefix}rounded-s-#{$name}#{$postfix} {
+        border-start-start-radius: $size;
+        border-end-start-radius: $size;
+      }
+      #{$prefix}rounded-e-#{$name}#{$postfix} {
+        border-start-end-radius: $size;
+        border-end-end-radius: $size;
+      }
     }
   }
 }

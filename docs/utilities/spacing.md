@@ -83,10 +83,10 @@ Use `auto` variants to center or push content:
 
 ### Responsive spacing
 
-All spacing classes support breakpoint prefixes (e.g. `sm:`, `md:`, `lg:` depending on your `$breakpoints`):
+All spacing classes support breakpoint prefixes (`xs:`, `sm:`, `md:`, `lg:`, `xl:`, `2xl:`, `3xl:`):
 
 ```html
-<section class="p-2 md:p-4 lg:p-8">
+<section class="p-2 md:p-4 lg:p-8 2xl:p-10">
   <p class="mb-2 md:mb-4">
     Spacing increases as the viewport grows.
   </p>

@@ -11,7 +11,7 @@ Overflow utilities control how content that exceeds its container is handled.
 - `overflow-scroll`
 
 ```html
-<div class="w-200px h-100px overflow-auto">
+<div class="w-[200px] h-[100px] overflow-auto">
   Long content that becomes scrollable when it exceeds the box.
 </div>
 ```
@@ -27,8 +27,8 @@ Directional helpers let you focus on a single axis:
 - `overflow-x-scroll`, `overflow-y-scroll`
 
 ```html
-<div class="w-200px overflow-x-scroll">
-  <div class="w-400px">
+<div class="w-[200px] overflow-x-scroll">
+  <div class="w-[400px]">
     Horizontal scrolling only.
   </div>
 </div>

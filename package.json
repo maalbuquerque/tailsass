@@ -12,16 +12,30 @@
     "watch": "sass build.scss dist/tailsass.css --style=expanded --load-path=src --watch",
     "watch:min": "sass build.scss dist/tailsass.min.css --style=compressed --load-path=src --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "UNLICENSED",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "sass",
+    "scss",
+    "css",
+    "utility-first",
+    "utility-classes",
+    "css-utilities",
+    "tailwind-alternative",
+    "tailwind-scss",
+    "lightweight"
+  ],
+  "author": "maalbuquerque",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "sass": "^1.97.3"
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     ".": {
@@ -33,6 +47,7 @@
     "./dist/*": "./dist/*"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }

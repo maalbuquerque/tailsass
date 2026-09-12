@@ -8,9 +8,9 @@ Border utilities control border style, width, outline, and radius.
 - `outline-solid`, `outline-dashed`, `outline-dotted`, `outline-double`, `outline-none`
 
 ```html
-<div class="border-solid border-1 rounded-2 p-4">
-  Solid 1px border with small radius.
-  </div>
+<div class="border-solid border-1 rounded p-4">
+  Solid 1px border with default radius.
+</div>
 ```
 
 ### Border widths
@@ -29,12 +29,13 @@ Use numeric suffixes from `0` through `12`:
 
 ### Border radius
 
-- `rounded-full`: fully pill-shaped corners
-- `rounded-{n}` (0–12) using the base `--border-radius` variable
-- Directional radii: `rounded-t-{n}`, `rounded-r-{n}`, `rounded-b-{n}`, `rounded-l-{n}`, `rounded-s-{n}`, `rounded-e-{n}`
+Tailwind-compatible named scale:
+
+- `rounded-none`, `rounded-sm`, `rounded`, `rounded-md`, `rounded-lg`, `rounded-xl`, `rounded-2xl`, `rounded-3xl`, `rounded-full`
+- Directional: `rounded-t`, `rounded-r`, `rounded-b`, `rounded-l`, `rounded-s`, `rounded-e` (and with size suffixes, e.g. `rounded-t-lg`)
 
 ```html
-<button class="px-4 py-2 rounded-3">
+<button class="px-4 py-2 rounded-md">
   Medium rounded button
 </button>
 

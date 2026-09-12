@@ -6,8 +6,6 @@
 npm install @maalbuquerque/tailsass
 ```
 
-If you are using GitHub Packages, configure your `.npmrc` as described in the main project `README.md`.
-
 ### Use as global CSS
 
 Import the compiled CSS once in your app entry (for example in a React/Vue/Svelte app):
@@ -42,12 +40,22 @@ This will generate the same utility classes into your compiled CSS. Use the same
 Most utilities support responsive prefixes based on your configured breakpoints. For example:
 
 ```html
-<div class="p-2 md:p-4 lg:p-8">
+<div class="p-2 md:p-4 lg:p-8 2xl:p-10">
   <p class="text-base md:text-xl">
     This text and padding grow on larger screens.
   </p>
 </div>
 ```
 
-The exact breakpoint names and values come from the `$breakpoints` map in the library’s Sass variables.
+Default `$breakpoints`:
+
+| Prefix | Min width |
+|---|---|
+| `xs:` | 480px |
+| `sm:` | 640px |
+| `md:` | 768px |
+| `lg:` | 1024px |
+| `xl:` | 1280px |
+| `2xl:` | 1536px |
+| `3xl:` | 1920px |
 

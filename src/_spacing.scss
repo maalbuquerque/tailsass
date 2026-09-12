@@ -89,6 +89,6 @@
 
 @each $breakpoint, $value in $breakpoints {
   @media (min-width: $value) {
-    @include apply-spacing('.#{$breakpoint}\\:');
+    @include apply-spacing(bp-prefix($breakpoint));
   }
 }

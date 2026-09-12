@@ -21,7 +21,7 @@ Typography utilities cover text alignment, wrapping, truncation, and font weight
 - `text-balance`, `text-pretty`: advanced wrapping where supported
 
 ```html
-<p class="truncate w-200px">
+<p class="truncate w-[200px]">
   Very long line of text that will be cut off with an ellipsis when it exceeds the container width.
 </p>
 ```
