@@ -73,7 +73,10 @@ export default function DocsShell({ children }: DocsShellProps) {
               </p>
               <ul className="m-0 list-none p-0">
                 {section.items.map((item) => {
-                  const active = pathname === item.href
+                  const active =
+                    pathname === item.href ||
+                    pathname === `${item.href}/` ||
+                    (item.href !== '/' && pathname.startsWith(`${item.href}/`))
                   return (
                     <li key={item.href}>
                       <Link

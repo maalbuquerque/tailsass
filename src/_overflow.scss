@@ -1,27 +1,25 @@
 @use 'modifiers' as *;
 
-$overflows: (
-  overflow-auto: auto,
-  overflow-hidden: hidden,
-  overflow-visible: visible,
-  overflow-clip: clip,
-  overflow-scroll: scroll,
-  overflow-x-auto: auto-x,
-  overflow-y-auto: auto-y,
-  overflow-x-hidden: hidden-x,
-  overflow-y-hidden: hidden-y,
-  overflow-x-visible: visible-x,
-  overflow-y-visible: visible-y,
-  overflow-x-clip: clip-x,
-  overflow-y-clip: clip-y,
-  overflow-x-scroll: scroll-x,
-  overflow-y-scroll: scroll-y
+$overflow-values: (
+  auto: auto,
+  hidden: hidden,
+  visible: visible,
+  clip: clip,
+  scroll: scroll,
 );
 
 @mixin apply-overflows($prefix: '.') {
-  @each $overflow, $value in $overflows {
-    #{$prefix}#{$overflow} {
+  @each $name, $value in $overflow-values {
+    #{$prefix}overflow-#{$name} {
       overflow: $value;
+    }
+
+    #{$prefix}overflow-x-#{$name} {
+      overflow-x: $value;
+    }
+
+    #{$prefix}overflow-y-#{$name} {
+      overflow-y: $value;
     }
   }
 }

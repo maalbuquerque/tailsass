@@ -57,5 +57,5 @@ You can use text size utilities to scale your typography:
 <span class="font-bold">Important label</span>
 ```
 
-All typography utilities support responsive prefixes (for example `md:text-center`, `lg:text-4xl`).
+All typography utilities support responsive prefixes (for example `md:text-center`, `lg:text-4xl`). For loading a custom typeface, see [Fonts](./fonts.md).
 

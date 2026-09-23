@@ -1,30 +1,83 @@
+@use 'sass:map';
+
 $animations: (
   "animate-spin": "spin 1s linear infinite",
   "animate-pulse": "pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite",
-  "animate-bounce": "bounce 1s infinite",	
+  "animate-bounce": "bounce 1s infinite",
   "animate-none": "none"
 );
 
 $transitions: (
-  "transition-none": none,
-  "transition-all": all .2s ease-in-out,
-  "transition-colors": color 0.2s ease-in-out,
-  "transition-opacity": opacity 0.2s ease-in-out,
-  "transition-transform": transform 0.2s ease-in-out
+  "transition-none": (
+    property: none,
+  ),
+  "transition-all": (
+    property: all,
+    duration: 0.2s,
+    timing: ease-in-out,
+  ),
+  "transition-colors": (
+    property: (color, background-color, border-color, text-decoration-color, fill, stroke),
+    duration: 0.2s,
+    timing: ease-in-out,
+  ),
+  "transition-opacity": (
+    property: opacity,
+    duration: 0.2s,
+    timing: ease-in-out,
+  ),
+  "transition-transform": (
+    property: transform,
+    duration: 0.2s,
+    timing: ease-in-out,
+  )
 );
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
 
 @mixin apply-animations($prefix: '.') {
   @each $animation, $value in $animations {
     #{$prefix}#{$animation} {
-      animation: $value;
+      animation: #{$value};
     }
   }
 }
 
 @mixin apply-transitions($prefix: '.') {
-  @each $transition, $value in $transitions {
-    #{$prefix}#{$transition} {
-      transition: $value;
+  @each $name, $config in $transitions {
+    #{$prefix}#{$name} {
+      transition-property: map.get($config, property);
+
+      @if map.has-key($config, duration) {
+        transition-duration: map.get($config, duration);
+      }
+
+      @if map.has-key($config, timing) {
+        transition-timing-function: map.get($config, timing);
+      }
     }
   }
 }

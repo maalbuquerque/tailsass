@@ -10,9 +10,8 @@ Animation and transition utilities let you quickly add motion without writing ke
 - `animate-none`: disable animation
 
 ```html
-<button class="w-10 h-10 rounded-full border animate-spin">
-  <!-- Spinner -->
-</button>
+<div class="w-10 h-10 rounded-full border-2 border-solid border-purple-200 animate-spin"
+     style="border-top-color: #7c3aed"></div>
 ```
 
 ```html
