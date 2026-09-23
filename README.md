@@ -4,7 +4,7 @@
 
 Unofficial utility-first CSS/Sass helpers. Use as compiled CSS or import the Sass source in your project.
 
-**Docs:** [Documentation](https://github.com/maalbuquerque/tailsass/blob/main/docs/index.md)
+**Docs:** [maalbuquerque.github.io/tailsass](https://maalbuquerque.github.io/tailsass/)
 
 ## Install
 
