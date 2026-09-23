@@ -1,0 +1,32 @@
+:root {
+  --font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-size: 16px;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--slate-50);
+  color: var(--slate-900);
+}
+
+.docs-shell {
+  min-height: 100vh;
+}
+
+.docs-shell-main {
+  min-height: 100vh;
+}
+
+.docs-main {
+  max-width: 48rem;
+}
+
+.docs-nav-label {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

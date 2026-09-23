@@ -1,0 +1,30 @@
+{
+  "name": "tailsass-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node ./scripts/sync-css.mjs",
+    "dev": "next dev --port 3010",
+    "prebuild": "node ./scripts/sync-css.mjs",
+    "build": "next build",
+    "start": "next start --port 3010",
+    "lint": "eslint",
+    "sync:css": "node ./scripts/sync-css.mjs"
+  },
+  "dependencies": {
+    "@maalbuquerque/tailsass": "file:..",
+    "@tabler/icons-react": "^3.44.0",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sass": "^1.101.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "typescript": "^5"
+  }
+}
