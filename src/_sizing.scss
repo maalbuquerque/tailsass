@@ -40,7 +40,7 @@
   }
 
   // Fractions (HTML: w-1/2 → CSS: .w-1\/2)
-  @each $num, $den, $size in $tailwind-fractions {
+  @each $num, $den, $size in $fractions {
     #{"#{$prefix}w-#{$num}\\/#{$den}"} {
       width: $size;
     }
@@ -49,7 +49,7 @@
     }
   }
 
-  // Fixed arbitrary-value whitelist (not open-ended like Tailwind JIT).
+  // Fixed arbitrary-value whitelist (not open-ended).
   // HTML: w-[100px], h-[50%], etc. → CSS: .w-\[100px], .h-\[50\%]
   @for $i from 1 through 10 {
     #{"#{$prefix}w-\\[#{$i}00px\\]"} {
@@ -67,7 +67,7 @@
     }
   }
 
-  @each $name, $size in $tailwind-fixed-sizes {
+  @each $name, $size in $fixed-sizes {
     #{$prefix}w-#{$name} {
       width: $size;
     }

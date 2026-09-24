@@ -1,6 +1,6 @@
 ## Spacing utilities
 
-Tailsass provides margin, padding, gap, and positional spacing helpers that follow Tailwind's size scale.
+Tailsass provides margin, padding, gap, and positional spacing helpers on the fixed size scale.
 
 ### Class naming
 
@@ -9,7 +9,7 @@ Tailsass provides margin, padding, gap, and positional spacing helpers that foll
 - **Gap** (for flex/grid): `gap-{n}`
 - **Position offsets**: `top-{n}`, `right-{n}`, `bottom-{n}`, `left-{n}`
 
-`{n}` follows the Tailwind fixed size scale:
+`{n}` follows the fixed size scale:
 
 | Class suffix | Value |
 |---|---|

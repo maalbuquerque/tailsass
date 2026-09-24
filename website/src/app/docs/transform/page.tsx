@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const offscreenCode = `<div class="relative w-full h-64 overflow-hidden">
-  <div class="absolute top-0 right-0 bottom-0 left-0 bg-blue-500 translate-x-full">
+  <div class="absolute top-0 right-0 bottom-0 left-0 bg-purple-500 translate-x-full">
     I start completely off-screen to the right.
   </div>
 </div>`

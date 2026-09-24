@@ -24,7 +24,7 @@
     margin-block: auto;
   }
 
-  @each $name, $size in $tailwind-fixed-sizes {
+  @each $name, $size in $fixed-sizes {
     #{$prefix}gap-#{$name} {
       gap: $size;
     }

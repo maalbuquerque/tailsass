@@ -1,0 +1,13 @@
+// Docs site: slate + purple utilities only. All --* tokens still ship via color-variables.
+@use '../../../src/color-palette' as *;
+@use '../../../src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+  )
+);
+
+// Optional brand overrides:
+// :root {
+//   --purple-600: hsl(271 81% 48%);
+// }

@@ -23,8 +23,8 @@ export default function HomePage() {
         principle is straightforward: do not complicate what does not need to be complicated.
       </p>
       <p className="mb-8 text-base text-slate-600">
-        Utility-first helpers with Tailwind-style class names, compiled from SCSS, without the full
-        Tailwind pipeline. This site will document each utility with class names and live examples.
+        Utility-first helpers compiled from SCSS. This site documents each utility with class names
+        and live examples.
       </p>
 
       <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -43,10 +43,6 @@ export default function HomePage() {
         <p className="mb-2 text-sm font-bold text-purple-800">Install</p>
         <code className="text-sm text-purple-900">npm install @maalbuquerque/tailsass</code>
       </div>
-
-      <p className="mt-8 text-sm text-slate-500">
-        Tailsass is not affiliated with Tailwind Labs or the Tailwind CSS project.
-      </p>
     </div>
   )
 }

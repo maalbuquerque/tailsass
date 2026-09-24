@@ -5,7 +5,7 @@ import { DocH2, DocLead, DocP } from '@/components/docs/DocText'
 
 export const metadata: Metadata = {
   title: 'Spacing · Tailsass',
-  description: 'Margin, padding, gap, and position offset utilities on the Tailwind size scale.',
+  description: 'Margin, padding, gap, and position offset utilities on the fixed size scale.',
 }
 
 const scale = [
@@ -89,7 +89,7 @@ export default function SpacingPage() {
       <p className="docs-nav-label mb-3 text-sm font-bold text-purple-600">Utilities</p>
       <h1 className="mb-4 text-4xl font-bold text-slate-900">Spacing</h1>
       <DocLead>
-        Margin, padding, gap, and positional offsets on the same fixed size scale Tailwind uses.
+        Margin, padding, gap, and positional offsets on the fixed size scale.
       </DocLead>
 
       <DocH2 id="naming">Class naming</DocH2>
@@ -107,7 +107,7 @@ export default function SpacingPage() {
 
       <DocH2 id="scale">Size scale</DocH2>
       <DocP>
-        <code className="text-purple-700">{'{n}'}</code> follows the Tailwind fixed size scale.
+        <code className="text-purple-700">{'{n}'}</code> follows the fixed size scale.
         Values 0–12 are contiguous, then the scale becomes non-linear (14, 16, 20, …, 96).
       </DocP>
       <div className="mb-8 overflow-auto rounded-lg border-1 border-solid border-slate-200">

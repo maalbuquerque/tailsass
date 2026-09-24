@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import DocsShell from '@/components/DocsShell'
 import '@/vendor/tailsass.css'
+import '@/vendor/app-colors.css'
 import '@/styles/globals.scss'
 
 const dmSans = DM_Sans({
@@ -11,7 +12,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: 'Tailsass',
-  description: 'Utility-first CSS and Sass helpers. A lightweight Tailwind-style toolkit in SCSS.',
+  description: 'Utility-first CSS and Sass helpers compiled from SCSS.',
 }
 
 export default function RootLayout({

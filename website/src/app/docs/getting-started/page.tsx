@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import CodeBlock from '@/components/docs/CodeBlock'
 import Example from '@/components/docs/Example'
 import { DocH2, DocLead, DocP } from '@/components/docs/DocText'
@@ -12,9 +13,21 @@ const installCode = `npm install @maalbuquerque/tailsass`
 
 const cssImportCode = `import '@maalbuquerque/tailsass/dist/tailsass.css';`
 
+const colorsBundleCode = `// styles/colors.scss
+@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+  )
+);`
+
+const dualImportCode = `import '@maalbuquerque/tailsass/dist/tailsass.css';
+import './app-colors.css';`
+
 const htmlExampleCode = `<div class="p-4 my-4 w-full text-center">
-  <h1 class="text-3xl font-bold mb-2">Hello Tailsass</h1>
-  <p class="text-base text-wrap">
+  <h1 class="text-3xl font-bold mb-2 text-slate-900">Hello Tailsass</h1>
+  <p class="text-base text-wrap text-slate-600">
     Utility classes for spacing, sizing, typography, and more.
   </p>
 </div>`
@@ -54,12 +67,29 @@ export default function GettingStartedPage() {
 
       <DocH2 id="use-as-css">Use as global CSS</DocH2>
       <DocP>
-        Import the compiled CSS once in your app entry (for example in a React, Vue, or Svelte
-        app):
+        Import the compiled <strong>core</strong> CSS once in your app entry (spacing, sizing,
+        typography, layout — no color palettes):
       </DocP>
       <div className="mb-6">
         <CodeBlock language="js" code={cssImportCode} />
       </div>
+
+      <DocH2 id="colors">Add colors (opt-in)</DocH2>
+      <DocP>
+        Colors are a separate Sass layer. Configure the palettes you need, compile to CSS, and
+        import beside core. Full walkthrough on the{' '}
+        <Link className="text-purple-700" href="/docs/colors">
+          Colors
+        </Link>{' '}
+        page.
+      </DocP>
+      <div className="mb-4">
+        <CodeBlock language="scss" code={colorsBundleCode} />
+      </div>
+      <div className="mb-6">
+        <CodeBlock language="js" code={dualImportCode} />
+      </div>
+
       <DocP>Then use utility classes directly in your markup:</DocP>
       <div className="mb-4">
         <CodeBlock language="html" code={htmlExampleCode} />
@@ -67,8 +97,8 @@ export default function GettingStartedPage() {
       <div className="mb-6">
         <Example>
           <div className="p-4 my-4 w-full text-center">
-            <h1 className="mb-2 text-3xl font-bold">Hello Tailsass</h1>
-            <p className="text-base text-wrap">
+            <h1 className="mb-2 text-3xl font-bold text-slate-900">Hello Tailsass</h1>
+            <p className="text-base text-wrap text-slate-600">
               Utility classes for spacing, sizing, typography, and more.
             </p>
           </div>
@@ -76,7 +106,7 @@ export default function GettingStartedPage() {
       </div>
 
       <DocH2 id="use-with-sass">Use with Sass</DocH2>
-      <DocP>If your build supports Sass, import the source instead:</DocP>
+      <DocP>If your build supports Sass, import the core source instead:</DocP>
       <div className="mb-4">
         <CodeBlock language="scss" code={sassImportCode} />
       </div>

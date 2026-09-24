@@ -11,7 +11,7 @@ Transform utilities provide simple translate helpers for moving elements fully o
 
 ```html
 <div class="relative w-full h-64 overflow-hidden">
-  <div class="absolute inset-0 bg-blue-500 translate-x-full">
+  <div class="absolute inset-0 bg-purple-500 translate-x-full">
     I start completely off-screen to the right.
   </div>
 </div>

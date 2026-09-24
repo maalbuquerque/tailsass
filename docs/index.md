@@ -11,7 +11,7 @@ Tailsass is a utility-first CSS/Sass toolkit. These docs explain the available c
 - **[Sizing](./utilities/sizing.md)**: width/height helpers.
 - **[Typography](./utilities/typography.md)**: text alignment, truncation, and font styles.
 - **[Fonts](./utilities/fonts.md)**: load a custom typeface and apply it globally or with your own classes.
-- **[Colors](./utilities/colors.md)**: background, text, border, outline, shadow, and accent colors.
+- **[Colors](./utilities/colors.md)**: opt-in palettes — build an app color bundle beside core.
 - **[Borders](./utilities/borders.md)**: border style, width, and radius.
 - **[Display & layout](./utilities/display.md)**: display modes, flexbox, grid, floats, visibility, alignment, z-index, and screen-reader helpers.
 - **[Position](./utilities/position.md)**: position values combined with spacing offsets.

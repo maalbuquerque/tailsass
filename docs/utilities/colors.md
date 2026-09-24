@@ -1,22 +1,76 @@
 ## Color utilities
 
-Color utilities provide background, text, border, outline, shadow, and accent colors based on the Tailsass color palette.
+Color utilities are **opt-in**. The core Tailsass stylesheet has no palette CSS. Each app compiles the palettes it needs, then imports that bundle beside the core file.
 
-### Palette and naming
+### Why colors are separate
 
-Colors are organized by name and shade (`50`–`950`). Full palettes:
+Every palette × shade × `bg` / `text` / `border` / … × hover/focus/dark adds a lot of CSS. Keep core utilities lean, and ship only the colors your product uses.
 
-`slate`, `gray`, `zinc`, `neutral`, `stone`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`
+### Build an app color bundle
+
+Configure `$colors` with `palette()`, compile, and import beside core. Loading `colors` also pulls in `color-variables` (all `--*` tokens). Override any token in your app if you need a custom brand.
+
+```scss
+// styles/colors.scss
+@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+  )
+);
+
+// Optional brand override
+// :root {
+//   --purple-600: hsl(271 81% 48%);
+// }
+```
+
+```bash
+npx sass styles/colors.scss dist/app-colors.css --no-source-map
+```
+
+```js
+import '@maalbuquerque/tailsass/dist/tailsass.css';
+import './app-colors.css';
+```
+
+### Add another palette
+
+Add it to `$colors`. Catalog tokens already exist — you only choose which utility classes to generate.
+
+```scss
+@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+    'blue': palette('blue'),
+  )
+);
+```
+
+### Full catalog
+
+Available names: `slate`, `gray`, `zinc`, `neutral`, `stone`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`
+
+```scss
+@use '@maalbuquerque/tailsass/src/colors';
+```
+
+### Naming
 
 - Background: `bg-{color}-{shade}`
 - Text: `text-{color}-{shade}`
 - Border: `border-{color}-{shade}`
 - Outline: `outline-{color}-{shade}`
 - Shadow glow: `shadow-{color}-{shade}`
-- Accent (for checkboxes/radios): `accent-{color}-{shade}`
+- Accent: `accent-{color}-{shade}`
+
+Shades are `50`–`950`.
 
 ```html
-<button class="px-4 py-2 bg-blue-600 text-white shadow-blue-400">
+<button class="px-4 py-2 bg-purple-600 text-white shadow-purple-400">
   Primary button
 </button>
 ```
@@ -29,25 +83,9 @@ Colors are organized by name and shade (`50`–`950`). Full palettes:
 
 ### White, black, and transparent
 
-- `bg-white`, `bg-black`, `bg-transparent`
-- `text-white`, `text-black`
-- `border-white`, `border-black`
-- `shadow-white`, `shadow-black`
-- `outline-white`, `outline-black`
-- `accent-white`, `accent-black`
-
-```html
-<button class="px-4 py-2 bg-black text-white border-white">
-  High contrast
-</button>
-```
+Included whenever you emit color utilities: `bg-white`, `bg-black`, `bg-transparent`, plus matching `text-*`, `border-*`, `shadow-*`, `outline-*`, and `accent-*` for white and black.
 
 ### State and color-scheme variants
 
-Most color utilities support:
-
-- **State prefixes** (for example `hover:bg-blue-700`, `focus:outline-emerald-500`) based on `$states`
+- **State prefixes** (for example `hover:bg-purple-800`, `focus:border-purple-500`) based on `$states`
 - **Color-scheme prefixes** (for example `dark:bg-slate-900`, `light:text-slate-900`) based on `$color-schemes`
-
-Use these to build consistent, theme-aware components without custom CSS.
-

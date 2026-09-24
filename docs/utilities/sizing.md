@@ -17,9 +17,9 @@ Sizing utilities control width and height with a small, predictable set of class
 </div>
 ```
 
-### Tailwind fixed size scale
+### Fixed size scale
 
-Width and height classes follow the Tailwind size scale with `w-{n}` and `h-{n}`:
+Width and height classes follow the fixed size scale with `w-{n}` and `h-{n}`:
 
 | Class suffix | Value |
 |---|---|
@@ -62,7 +62,7 @@ Width and height classes follow the Tailwind size scale with `w-{n}` and `h-{n}`
 
 ### Fraction sizes
 
-Tailwind-compatible fraction utilities (`/` escaped in CSS as `\/`):
+Fraction utilities (`/` escaped in CSS as `\/`):
 
 - Halves: `w-1/2`
 - Thirds: `w-1/3`, `w-2/3`
@@ -82,7 +82,7 @@ Same set for `h-*`. Responsive prefixes work too (`md:w-1/2`).
 
 ### Percentage and pixel sizes
 
-Fixed arbitrary-value whitelist (Tailwind-style brackets). Not open-ended — only these steps are generated:
+Fixed arbitrary-value whitelist (bracket syntax). Not open-ended — only these steps are generated:
 
 - **Percent** (10% steps): `w-[10%]`, `w-[20%]`, …, `w-[100%]` and matching `h-[…]`
 - **Pixels** (100px steps): `w-[100px]`, `w-[200px]`, …, `w-[1000px]` and matching `h-[…]`

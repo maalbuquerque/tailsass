@@ -27,7 +27,7 @@ export default function DocsShell({ children }: DocsShellProps) {
 
   return (
     <div className="docs-shell">
-      <header className="fixed top-0 left-0 right-0 z-30 flex items-center gap-3 border-b-1 border-solid border-slate-200 bg-white px-4 py-3 md:hidden">
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center gap-3 border-b-1 border-solid border-slate-200 bg-white px-4 py-3 md:hidden">
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-md p-2 text-purple-700 hover:bg-purple-50"
@@ -45,7 +45,7 @@ export default function DocsShell({ children }: DocsShellProps) {
       {open ? (
         <button
           type="button"
-          className="fixed top-0 right-0 bottom-0 left-0 z-20 bg-slate-900 opacity-40 md:hidden"
+          className="fixed top-14 right-0 bottom-0 left-0 z-20 bg-slate-900 opacity-40 md:hidden"
           aria-label="Close menu overlay"
           onClick={() => setOpen(false)}
         />
@@ -53,7 +53,8 @@ export default function DocsShell({ children }: DocsShellProps) {
 
       <aside
         className={[
-          'docs-sidebar fixed top-0 left-0 z-30 flex h-screen w-72 flex-col border-r-1 border-solid border-slate-200 bg-white',
+          'docs-sidebar fixed left-0 z-30 flex w-72 flex-col border-r-1 border-solid border-slate-200 bg-white',
+          'top-14 bottom-0 md:top-0 md:h-screen',
           open ? 'flex' : 'hidden',
           'md:flex',
         ].join(' ')}
@@ -65,7 +66,7 @@ export default function DocsShell({ children }: DocsShellProps) {
           <p className="mt-1 text-sm text-slate-500">Utility-first CSS in Sass</p>
         </div>
 
-        <nav className="flex-1 overflow-auto px-3 py-4 pt-16 md:pt-4">
+        <nav className="flex-1 overflow-auto px-3 py-4">
           {navSections.map((section) => (
             <div key={section.title} className="mb-6">
               <p className="docs-nav-label mb-2 px-2 text-xs font-bold text-purple-600">

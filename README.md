@@ -1,8 +1,6 @@
 # Tailsass
 
-**Tailsass is an independent project and is not affiliated with, endorsed by, or supported by Tailwind Labs or the Tailwind CSS project.**
-
-Unofficial utility-first CSS/Sass helpers. Use as compiled CSS or import the Sass source in your project.
+Utility-first CSS/Sass helpers. Use as compiled CSS or import the Sass source in your project.
 
 **Docs:** [maalbuquerque.github.io/tailsass](https://maalbuquerque.github.io/tailsass/)
 
@@ -14,13 +12,37 @@ npm install @maalbuquerque/tailsass
 
 ## Use
 
-**As CSS** (e.g. in your app entry or bundler):
+**Core CSS** (spacing, sizing, typography, layout — no color palettes):
 
 ```js
 import '@maalbuquerque/tailsass/dist/tailsass.css';
 ```
 
-**As Sass** (if your build supports Sass):
+**Colors** are opt-in. Compile only the palettes you need, then import beside core:
+
+```scss
+// styles/colors.scss
+@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+  )
+);
+```
+
+```bash
+npx sass styles/colors.scss dist/app-colors.css
+```
+
+```js
+import '@maalbuquerque/tailsass/dist/tailsass.css';
+import './app-colors.css';
+```
+
+Tokens come from `src/color-variables` automatically. Override any `--*` in your app if you need a custom brand. See the [Colors docs](https://maalbuquerque.github.io/tailsass/docs/colors/).
+
+**As Sass** (core utilities):
 
 ```scss
 @use '@maalbuquerque/tailsass/src/index' as tailsass;
@@ -30,8 +52,8 @@ import '@maalbuquerque/tailsass/dist/tailsass.css';
 
 | Script        | Description                          |
 |---------------|--------------------------------------|
-| `npm run build`   | Build expanded CSS to `dist/`        |
-| `npm run build:min` | Build minified CSS to `dist/`      |
+| `npm run build`   | Build expanded core CSS to `dist/`   |
+| `npm run build:min` | Build minified core CSS to `dist/` |
 | `npm run watch`   | Watch and rebuild expanded CSS       |
 | `npm run watch:min` | Watch and rebuild minified CSS    |
 

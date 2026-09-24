@@ -96,7 +96,7 @@ export default function SizingPage() {
       <DocH2 id="scale">Fixed size scale</DocH2>
       <DocP>
         <code className="text-purple-700">w-{'{n}'}</code> and{' '}
-        <code className="text-purple-700">h-{'{n}'}</code> follow the Tailwind size scale.
+        <code className="text-purple-700">h-{'{n}'}</code> follow the fixed size scale.
       </DocP>
       <div className="mb-4 overflow-auto rounded-lg border-1 border-solid border-slate-200">
         <table className="w-full text-left text-sm">
@@ -137,7 +137,7 @@ export default function SizingPage() {
 
       <DocH2 id="fractions">Fractions</DocH2>
       <DocP>
-        Tailwind-compatible fractions such as <code className="text-purple-700">w-1/2</code>,{' '}
+        Fraction utilities such as <code className="text-purple-700">w-1/2</code>,{' '}
         <code className="text-purple-700">w-1/3</code>, <code className="text-purple-700">w-2/3</code>,
         fourths, fifths, sixths, and twelfths. Same set for <code className="text-purple-700">h-*</code>.
       </DocP>

@@ -1,7 +1,7 @@
 {
   "name": "@maalbuquerque/tailsass",
-  "version": "1.0.3",
-  "description": "Unofficial utility-first CSS/Sass helpers (not affiliated with Tailwind CSS).",
+  "version": "1.0.4",
+  "description": "Utility-first CSS and Sass helpers.",
   "main": "dist/tailsass.css",
   "style": "dist/tailsass.css",
   "sass": "src/index.scss",
@@ -13,16 +13,12 @@
     "watch:min": "sass build.scss dist/tailsass.min.css --style=compressed --load-path=src --watch"
   },
   "keywords": [
-    "tailwind",
-    "tailwindcss",
     "sass",
     "scss",
     "css",
     "utility-first",
     "utility-classes",
     "css-utilities",
-    "tailwind-alternative",
-    "tailwind-scss",
     "lightweight"
   ],
   "author": "maalbuquerque",

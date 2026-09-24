@@ -29,7 +29,7 @@ Use numeric suffixes from `0` through `12`:
 
 ### Border radius
 
-Tailwind-compatible named scale:
+Named scale:
 
 - `rounded-none`, `rounded-sm`, `rounded`, `rounded-md`, `rounded-lg`, `rounded-xl`, `rounded-2xl`, `rounded-3xl`, `rounded-full`
 - Directional: `rounded-t`, `rounded-r`, `rounded-b`, `rounded-l`, `rounded-s`, `rounded-e` (and with size suffixes, e.g. `rounded-t-lg`)

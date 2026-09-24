@@ -1,14 +1,18 @@
 import type { Metadata } from 'next'
+import type { CSSProperties } from 'react'
 import CodeBlock from '@/components/docs/CodeBlock'
 import Example from '@/components/docs/Example'
 import { DocH2, DocLead, DocP } from '@/components/docs/DocText'
 
 export const metadata: Metadata = {
   title: 'Colors · Tailsass',
-  description: 'Background, text, border, outline, shadow, and accent color utilities.',
+  description:
+    'Opt-in color utilities: build an app color bundle with the palettes you need.',
 }
 
-const palettes = [
+const sitePalettes = ['slate', 'purple'] as const
+
+const catalogPalettes = [
   'slate',
   'gray',
   'zinc',
@@ -35,7 +39,38 @@ const palettes = [
 
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const
 
-const buttonCode = `<button class="px-4 py-2 bg-blue-600 text-white shadow-blue-400">
+const appColorsCode = `// styles/colors.scss
+@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+  )
+);
+
+// Optional: override any token from color-variables
+// :root {
+//   --purple-600: hsl(271 81% 48%);
+// }`
+
+const compileCode = `npx sass styles/colors.scss dist/app-colors.css --no-source-map`
+
+const dualImportCode = `import '@maalbuquerque/tailsass/dist/tailsass.css';
+import './app-colors.css';`
+
+const addBlueCode = `@use '@maalbuquerque/tailsass/src/color-palette' as *;
+@use '@maalbuquerque/tailsass/src/colors' with (
+  $colors: (
+    'slate': palette('slate'),
+    'purple': palette('purple'),
+    'blue': palette('blue'), // add this — tokens already exist
+  )
+);`
+
+const fullColorsCode = `// All catalog palettes (tokens included via colors)
+@use '@maalbuquerque/tailsass/src/colors';`
+
+const buttonCode = `<button class="px-4 py-2 bg-purple-600 text-white shadow-purple-400">
   Primary button
 </button>`
 
@@ -47,18 +82,72 @@ function shadeLabelClass(shade: number) {
   return shade >= 500 ? 'text-white' : 'text-slate-900'
 }
 
+function tokenSwatchStyle(color: string, shade: number): CSSProperties {
+  return {
+    backgroundColor: `var(--${color}-${shade})`,
+    color: shade >= 500 ? '#fff' : 'var(--slate-900)',
+  }
+}
+
 export default function ColorsPage() {
   return (
     <div>
       <p className="docs-nav-label mb-3 text-sm font-bold text-purple-600">Utilities</p>
       <h1 className="mb-4 text-4xl font-bold text-slate-900">Colors</h1>
       <DocLead>
-        Background, text, border, outline, shadow, and accent colors from the Tailsass palette.
+        Color utilities are opt-in. Core Tailsass has no palette CSS — each app compiles the
+        palettes it needs, then imports that bundle beside the core stylesheet.
       </DocLead>
 
-      <DocH2 id="naming">Palette and naming</DocH2>
+      <DocH2 id="why-split">Why colors are separate</DocH2>
+      <DocP>
+        Every palette × shade × <code className="text-purple-700">bg</code>/
+        <code className="text-purple-700">text</code>/
+        <code className="text-purple-700">border</code>/… × hover/focus/dark adds a lot of CSS. Keep
+        core utilities lean, and ship only the colors your product uses.
+      </DocP>
+
+      <DocH2 id="build-bundle">Build an app color bundle</DocH2>
+      <DocP>
+        Pick palettes with <code className="text-purple-700">palette()</code>, configure{' '}
+        <code className="text-purple-700">$colors</code>, compile, and import beside core. CSS
+        variables for the full catalog ship automatically from{' '}
+        <code className="text-purple-700">color-variables</code> when you load{' '}
+        <code className="text-purple-700">colors</code> — <code className="text-purple-700">$colors</code>{' '}
+        only controls which utility classes are generated.
+      </DocP>
+      <div className="mb-4">
+        <CodeBlock language="scss" code={appColorsCode} />
+      </div>
+      <DocP>
+        To rebrand, redefine any <code className="text-purple-700">--*</code> token after the{' '}
+        <code className="text-purple-700">@use</code> lines — later{' '}
+        <code className="text-purple-700">:root</code> declarations win.
+      </DocP>
+      <div className="mb-4">
+        <CodeBlock language="bash" code={compileCode} />
+      </div>
+      <div className="mb-6">
+        <CodeBlock language="js" code={dualImportCode} />
+      </div>
+
+      <DocH2 id="add-palette">Add another palette</DocH2>
+      <DocP>
+        Add it to <code className="text-purple-700">$colors</code>. Tokens for the full catalog
+        are already defined — you only choose which utility classes to generate.
+      </DocP>
+      <div className="mb-6">
+        <CodeBlock language="scss" code={addBlueCode} />
+      </div>
+
+      <DocH2 id="full-utilities">Generate every palette</DocH2>
+      <DocP>To emit utility classes for the entire catalog:</DocP>
+      <div className="mb-6">
+        <CodeBlock language="scss" code={fullColorsCode} />
+      </div>
+
+      <DocH2 id="naming">Naming</DocH2>
       <DocP>Colors use name + shade (50–950):</DocP>
-      <p className="mb-4 text-sm text-slate-600">{palettes.join(', ')}</p>
       <ul className="mb-6 list-none p-0 text-sm text-slate-700">
         <li className="mb-1">
           Background: <code className="text-purple-700">bg-{'{color}-{shade}'}</code>
@@ -80,13 +169,14 @@ export default function ColorsPage() {
         </li>
       </ul>
 
-      <DocH2 id="all-colors">All colors</DocH2>
+      <DocH2 id="this-site">Palettes on this site</DocH2>
       <DocP>
-        Every palette and shade as <code className="text-purple-700">bg-*</code>. The same shade
-        tokens work with text, border, outline, shadow, and accent prefixes.
+        These docs generate utility classes for <code className="text-purple-700">slate</code> and{' '}
+        <code className="text-purple-700">purple</code> only (same slim bundle as the example
+        above).
       </DocP>
       <div className="mb-8 flex flex-col gap-5">
-        {palettes.map((color) => (
+        {sitePalettes.map((color) => (
           <div key={color}>
             <div className="mb-2 flex items-baseline justify-between gap-3">
               <p className="text-sm font-bold text-slate-800">{color}</p>
@@ -142,6 +232,37 @@ export default function ColorsPage() {
         </div>
       </div>
 
+      <DocH2 id="all-palettes">All available palettes</DocH2>
+      <DocP>
+        These palettes are available when you{' '}
+        <code className="text-purple-700">@use &apos;@maalbuquerque/tailsass/src/colors&apos;</code>
+        .
+      </DocP>
+      <div className="mb-8 flex flex-col gap-5">
+        {catalogPalettes.map((color) => (
+          <div key={color}>
+            <div className="mb-2 flex items-baseline justify-between gap-3">
+              <p className="text-sm font-bold text-slate-800">{color}</p>
+              <code className="text-xs text-purple-700">
+                bg-{color}-{'{shade}'}
+              </code>
+            </div>
+            <div className="flex overflow-hidden rounded-md border-1 border-solid border-slate-200">
+              {shades.map((shade) => (
+                <div
+                  key={`${color}-${shade}`}
+                  className="flex h-14 min-w-0 flex-1 flex-col items-center justify-center"
+                  style={tokenSwatchStyle(color, shade)}
+                  title={`bg-${color}-${shade}`}
+                >
+                  <span className="text-xs font-bold">{shade}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
       <DocH2 id="examples">Examples</DocH2>
       <div className="mb-4">
         <CodeBlock language="html" code={buttonCode} />
@@ -150,7 +271,7 @@ export default function ColorsPage() {
         <Example>
           <button
             type="button"
-            className="cursor-pointer rounded-md bg-blue-600 px-4 py-2 text-white shadow-blue-400"
+            className="cursor-pointer rounded-md bg-purple-600 px-4 py-2 text-white shadow-purple-400"
           >
             Primary button
           </button>
@@ -164,28 +285,6 @@ export default function ColorsPage() {
           <div className="rounded-md border-1 border-solid border-slate-300 bg-slate-50 p-4 text-slate-900">
             Subtle card using slate tones.
           </div>
-        </Example>
-      </div>
-
-      <DocH2 id="neutrals">White, black, and transparent</DocH2>
-      <DocP>
-        <code className="text-purple-700">bg-white</code>,{' '}
-        <code className="text-purple-700">bg-black</code>,{' '}
-        <code className="text-purple-700">bg-transparent</code>, plus matching{' '}
-        <code className="text-purple-700">text-*</code>,{' '}
-        <code className="text-purple-700">border-*</code>,{' '}
-        <code className="text-purple-700">shadow-*</code>,{' '}
-        <code className="text-purple-700">outline-*</code>, and{' '}
-        <code className="text-purple-700">accent-*</code> for white and black.
-      </DocP>
-      <div className="mb-6">
-        <Example>
-          <button
-            type="button"
-            className="cursor-pointer rounded-md border-1 border-solid border-white bg-black px-4 py-2 text-white"
-          >
-            High contrast
-          </button>
         </Example>
       </div>
 
